@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Chop & Learn: Recognizing and Generating Object-state pairs">
+  <meta name="description" content="Chop & Learn: Recognizing and Generating Object-state pairs">
   <meta name="keywords" content="ChopNLearn, chopNlearn">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chop & Learn</title>
@@ -22,15 +22,13 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
@@ -39,95 +37,281 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <style>
+    #selectObject {
+      margin-right: 40px;
+    }
+
+    #compGenTable table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #compGenTable td,
+    #compGenTable th {
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+
+  </style>
+
+
 </head>
+
 <body>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Chop & Learn: Recognizing and Generating Object-State Compositions </h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://www.cs.umd.edu/~nirat/">Nirat Saini</a><sup>*</sup>,</span>
-            <span class="author-block">
-              <a href="https://hywang66.github.io/">Hanyu Wang</a><sup>*</sup>,</span>
-            <span class="author-block">
-              <a href="https://archana1998.github.io/">Archana Swaminathan</a>,
-            </span>
-            <span class="author-block">
-              <a href="https://vinojjayasundara.github.io/">Vinoj Jayasundara</a>,
-            </span>
-            <span class="author-block">
-              <a href="https://boheumd.github.io/">Bo He</a>,
-            </span>
-            <span class="author-block">
-              <a href="https://kampta.github.io/">Kamal Gupta</a>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.cs.umd.edu/~abhinav/">Abhinav Shrivastava</a>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">University of Maryland, College Park</span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><FONT COLOR="#ff0000"> (ICCV 2023) </FONT></span>
-          </div>
-
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://drive.google.com/drive/folders/1QylDeUJ8h-CjLRJ8Z9bsdCoQ2uMs59W_"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-                   
+            <h1 class="title is-1 publication-title">Chop & Learn: Recognizing and Generating Object-State Compositions
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.cs.umd.edu/~nirat/">Nirat Saini</a><sup>*</sup>,</span>
+              <span class="author-block">
+                <a href="https://hywang66.github.io/">Hanyu Wang</a><sup>*</sup>,</span>
+              <span class="author-block">
+                <a href="https://archana1998.github.io/">Archana Swaminathan</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://vinojjayasundara.github.io/">Vinoj Jayasundara</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://boheumd.github.io/">Bo He</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://kampta.github.io/">Kamal Gupta</a>,
+              </span>
+              <span class="author-block">
+                <a href="http://www.cs.umd.edu/~abhinav/">Abhinav Shrivastava</a>
+              </span>
             </div>
-          </div>
-           <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-              <!-- <h2 class="title is-4">Teaser Video</h2> -->
-              <div class="publication-video">
-                <video id="teaser" autoplay muted loop playsinline height="100%" controls>
-                    <source src="./static/videos/trailer_dataset1_final.mp4"
-                            type="video/mp4">
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">University of Maryland, College Park</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <FONT COLOR="#ff0000"> (ICCV 2023) </FONT>
+              </span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://drive.google.com/drive/folders/1QylDeUJ8h-CjLRJ8Z9bsdCoQ2uMs59W_"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+
+              </div>
+            </div>
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <!-- <h2 class="title is-4">Teaser Video</h2> -->
+                <div class="publication-video">
+                  <video id="teaser" autoplay muted loop playsinline height="100%" controls>
+                    <source src="./static/videos/trailer_dataset1_final.mp4" type="video/mp4">
                   </video>
+                </div>
+
               </div>
 
             </div>
+            <div class="subtitle has-text-centered">
+              <!-- <h2 class="title is-5">
+        More details coming soon
+      </h2> </div> -->
+            </div>
 
           </div>
-          <div class="subtitle has-text-centered">
-      <h2 class="title is-5">
-        More details coming soon
-      </h2> </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-          <p>
-            Credits for this awesome template goes to <a
-              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> website.
-          </p>
         </div>
       </div>
+  </section>
+
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recognizing and generating object-state compositions has been a challenging task, especially when
+              generalizing to unseen compositions.
+              In this paper, we study the task of cutting objects in different styles and the resulting object state
+              changes.
+              We propose a new benchmark suite Chop & Learn, to accommodate the needs of learning objects and different
+              cut styles using multiple viewpoints.
+              We also propose a new task of Compositional Image Generation, which can transfer learned cut styles to
+              different objects,
+              by generating novel object-state images.
+              Moreover, we also use the videos for Compositional Action Recognition,
+              and show valuable uses of this dataset for multiple video tasks.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Compositional Generation Results</h2>
+          <div class="content has-text-justified">
+            <p>
+              We consider these methods: <b>Stable Diffusion (SD)</b>, <b>Stable Diffusion + Textual Inversion (SD + TI)</b>, 
+              <b>DreamBooth</b>, <b>Stable Diffusion + Fine-tuning (FT)</b>, <b>Stable Diffusion + Textual Inversion + Fine-tuning (SD + TI + FT)</b>. 
+              <b>Ground Truth (GT)</b> real images are shown in the first row for reference.
+              Please select different objects and states to view the generated images.
+            </p>
+          </div>
+          <!-- Selection boxes -->
+          <label style="font-size: 16px"> Choose an Object </label>
+          <select style="font-size: 16px;" id="selectObject" onchange="updateSelectState()">
+          </select>
+
+          <label style="font-size: 16px"> Choose a State </label>
+          <select style="font-size: 16px;" id="selectState" onchange="updateCompGenImages()">
+            <!-- <option value="null">choose object first</option> -->
+          </select>
+
+          <!-- Table for images and descriptions -->
+          <table>
+            <tbody id="compGenTable">
+              <!-- Rows will be dynamically populated -->
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          Credits for this awesome template goes to <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          website.
+        </p>
+      </div>
+    </div>
+    </div>
+    </div>
+  </footer>
+
+
+
+  <script>
+    var metadata = {
+      "object_states": {
+        "cantaloupe": ["b", "hrs", "w", "rs", "sc", "lc"],
+        "apple": ["w", "rs", "sc", "lc", "b", "j", "hrs"],
+        "squash": ["lc", "b", "rs", "hrs", "w", "sc", "j"],
+        "cucumber": ["j", "hrs", "w", "rs", "sc", "lc", "b"],
+        "mango": ["sc", "lc", "b", "w"],
+        "lemon": ["hrs", "w", "rs", "sc", "lc"],
+        "pear": ["b", "hrs", "w", "rs", "sc", "j", "lc"],
+        "kiwi": ["rs", "sc", "lc", "hrs", "w"],
+        "watermelon": ["hrs", "rs", "sc", "w", "lc", "b"],
+        "turnip": ["b", "hrs", "w", "rs", "sc", "j", "lc"],
+        "persimmon": ["lc", "hrs", "w", "rs", "sc"],
+        "potato": ["rs", "w", "lc", "b", "sc", "j", "hrs"],
+        "bellpepper": ["j", "w", "sc", "lc", "b"],
+        "onion": ["w", "lc", "hrs", "rs", "sc"],
+        "banana": ["lc", "b", "hrs", "w", "rs", "sc"],
+        "tomato": ["hrs", "w", "sc", "lc", "rs"],
+        "carrot": ["lc", "b", "j", "hrs", "w", "rs", "sc"],
+        "broccoli": ["w", "lc", "sc"],
+        "orange": ["hrs", "w", "rs", "sc", "lc"],
+        "cauliflower": ["w", "lc", "sc"]
+      },
+      "state_abbr": {
+        "j": "julienne", "b": "baton", "hrs": "half round", "rs": "round slice", "sc": "small cut", "lc": "large cut", "w": "whole"
+      },
+      "name_shorten": {
+        "ground_truth": "GT", "sd": "SD", "sd_text_inv": "SD+TI", "dreambooth": "DreamBooth", "sd_finetune": "SD+FT", "sd_finetune_text_inv": "SD+FT+TI"
+      }
+    }
+
+    // When the document is fully loaded
+    window.onload = function () {
+      const selectObject = document.getElementById('selectObject');
+      const attributes = Object.keys(metadata.object_states);
+      for (let attribute of attributes) {
+        let option = document.createElement('option');
+        option.value = attribute;
+        option.textContent = attribute;
+        selectObject.appendChild(option);
+      }
+      updateSelectState()
+    };
+
+    function updateSelectState() {
+      const selectState = document.getElementById('selectState');
+      selectState.innerHTML = '';  // Clear current options
+
+      const selectObject = document.getElementById('selectObject').value;
+
+      // Get the list of attributes for the selectedA from the metadata
+      const states = metadata.object_states[selectObject];
+
+      // Iterate over the attributesB list and populate the selectState options
+      for (let attribute of states) {
+        selectState.options.add(new Option(metadata.state_abbr[attribute], attribute));
+      }
+
+      // Trigger image update
+      updateCompGenImages();
+    }
+
+    function updateCompGenImages() {
+      const table = document.getElementById('compGenTable');
+      table.innerHTML = '';  // Clear current rows
+
+      const selectObject = document.getElementById('selectObject').value;
+      const selectState = document.getElementById('selectState').value;
+
+      // Based on selectedA and selectedB, generate rows with descriptions and images
+      for (methodName in metadata.name_shorten) {
+        const row = table.insertRow();
+        const descCell = row.insertCell(0);
+        descCell.innerText = metadata.name_shorten[methodName];  // Add appropriate descriptions
+
+        for (let j = 0; j < 4; j++) {
+          const imgCell = row.insertCell(j + 1);
+          const img = document.createElement('img');
+          const imagePath = `./static/result_images/${methodName}_${selectObject}_${selectState}_${j}.jpg`;
+          img.src = imagePath;
+          imgCell.appendChild(img);
+        }
+      }
+    }
+
+
+  </script>
 
 </body>
+
 </html>
