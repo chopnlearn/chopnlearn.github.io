@@ -129,9 +129,7 @@
                     <source src="./static/videos/trailer_dataset1_final.mp4" type="video/mp4">
                   </video>
                 </div>
-
               </div>
-
             </div>
             <div class="subtitle has-text-centered">
               <!-- <h2 class="title is-5">
@@ -147,7 +145,7 @@
 
 
 
-
+  <!-- Abstract -->
   <section class="section">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -175,44 +173,140 @@
 
 
 
-
+  <!-- Dataset Collection and Statistics -->
   <section class="section">
     <div class="container is-max-desktop">
-      <!-- <div class="columns is-centered has-text-centered"> -->
-      <div class="columns is-centered">
+      <div class="columns is-centered has-text-centered">
         <div class="column">
-          <h2 class="title is-3">Compositional Generation Results</h2>
+          <h2 class="title is-3">Dataset Collection and Statistics</h2>
+          <div class="content has-text-justified">
+            <p>ChopNLearn is collected with:</p>
+            <ul>
+              <li><b>3</b> participants</li>
+              <li><b>4</b> cameras from different viewpoints</li>
+              <li><b>20</b> objects and <b>7</b> styles of cutting (+1 with whole)</li>
+              <li><b>112</b> compositions of object state pairs</li>
+              <li><b>1338</b> images of state-object compositions</li>
+              <li><b>1260</b> videos (ranging from 16 seconds to ~12 minutes)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-11">
+          <img src="./static/images/intro.jpg" alt="dataset_collection" width="100%">
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
           <div class="content has-text-justified">
             <p>
-              We consider these methods: <b>Stable Diffusion (SD)</b>, <b>Stable Diffusion + Textual Inversion (SD +
-                TI)</b>,
-              <b>DreamBooth</b>, <b>Stable Diffusion + Fine-tuning (FT)</b>, <b>Stable Diffusion + Textual Inversion +
-                Fine-tuning (SD + TI + FT)</b>.
-              <b>Ground Truth (GT)</b> real images are shown in the first row for reference.
-              Please select different objects and states to view the generated images.
+              We show the number of
+              samples for each object-style composition in a color-coded manner:
+            </p>
+            <p>
+              <span
+                style="display: inline-block; width: 1em; height: 1em; background-color: #f7cbaf; vertical-align: center;"></span>
+              orange represents 12 samples
+            </p>
+            <p>
+              <span
+                style="display: inline-block; width: 1em; height: 1em; background-color: #c5dfb4; vertical-align: center;"></span>
+              green represents 8 samples
+            </p>
+            <p>
+              <span
+                style="display: inline-block; width: 1em; height: 1em; background-color: #bcd8ee; vertical-align: center;"></span>
+              blue represents 4 samples.
             </p>
           </div>
-          <!-- Selection boxes -->
+        </div>
+      </div>
 
-          <div class="content">
-            <label style="font-size: 16px"> Choose an Object </label>
-            <select style="font-size: 16px;" id="selectObject" onchange="updateSelectState()">
-            </select>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-9">
+          <img src="./static/images/stats.jpg" alt="dataset_statistics" width="100%">
+        </div>
+      </div>
+  </section>
+
+
+  <!-- Compositional Generation Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <!-- <div class="columns is-centered"> -->
+        <div class="column">
+          <h2 class="title is-3">Compositional Image Generation Results</h2>
+          <div class="content has-text-justified">
+            <p>
+              <b>Compositional Image Generation</b>: Given training images of various objects in different states,
+              generate new images of unseen pairs of objects and states.
+            </p>
+            <p>
+              We consider these methods:
+            </p>
+            <ul>
+              <li><b>Stable Diffusion (SD)</b></li>
+              <li><b>Stable Diffusion + Textual Inversion (SD + TI)</b></li>
+              <li><b>DreamBooth</b></li>
+              <li><b>Stable Diffusion + Fine-tuning (FT)</b></li>
+              <li><b>Stable Diffusion + Textual Inversion + Fine-tuning (SD + TI + FT)</b></li>
+            </ul>
+            <p>
+              <b>Ground Truth (GT)</b> real images are shown in the first row for reference.
+            </p>
+            <!-- Please select different objects and states to view the generated images. -->
+
+            <p>
+              Please select different splits, objects, and states to view the generated images of different
+              compositions.
+            </p>
           </div>
 
-          <div class="content">
-            <label style="font-size: 16px"> Choose a State </label>
-            <select style="font-size: 16px;" id="selectState" onchange="updateCompGenImages()">
-              <!-- <option value="null">choose object first</option> -->
-            </select>
+
+          <!-- Selection boxes -->
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-4">
+              <div class="content">
+                <label style="font-size: 100%"> Choose a Split </label>
+                <select style="font-size: 100%; width: 36%;" id="selectSplit" onchange="updateSelectObject()">
+                  <option value="seen">seen</option>
+                  <option value="unseen">unseen</option>
+                  <option value="all">all</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="column is-4">
+              <div class="content">
+                <label style="font-size: 100%"> Choose an Object </label>
+                <select style="font-size: 100%; width: 36%;" id="selectObject" onchange="updateSelectState()">
+                </select>
+              </div>
+            </div>
+
+            <div class="column is-4">
+              <div class="content">
+                <label style="font-size: 100%"> Choose a State </label>
+                <select style="font-size: 100%; width: 36%;" id="selectState" onchange="updateCompGenImages()">
+                </select>
+              </div>
+            </div>
           </div>
 
           <!-- Table for images and descriptions -->
-          <table>
-            <tbody id="compGenTable">
-              <!-- Rows will be dynamically populated -->
-            </tbody>
-          </table>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-11">
+              <table>
+                <tbody id="compGenTable">
+                  <!-- Rows will be dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -222,13 +316,68 @@
 
 
 
-
-  <!-- 3D Reconstruction from Multiple Views with RealFusion -->
+  <!-- What else can Chop & Learn be used for? -->
   <section class="section">
     <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title">What else can Chop & Learn be used for?</h2>
+        </div>
+      </div>
+
+      <br>
+
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title">3D Reconstruction from Multiple Views with RealFusion</h2>
+          <h3 class="title is-4">Capture Long-Term Object-State transformations from Videos</h3>
+          <video id="transformations" autoplay muted loop playsinline height="100%" controls>
+            <source src="./videos/video_parse.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-4">Intermediate state/frame interpolation for Video Generation</h3>
+          <video id="transformations" autoplay muted loop playsinline height="100%" controls>
+            <source src="./videos/interpolating_frames.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-4">Replace <font color="green">green screen</font> with realistic
+            backgrounds</h3>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-9">
+          <img src="./static/images/gs_removed.jpg" alt="green_screen" width="100%">
+        </div>
+      </div>
+
+      <br>
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-4">Learn NeRF models for deformable objects</h3>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <p>
+            Results of 3D reconstruction using <a href="https://lukemelas.github.io/realfusion/">RealFusion</a>.
+          </p>
+          <p>
+            Input images are shown on the top row, and the corresponding 3D reconstructions are shown on the bottom row.
+          </p>
         </div>
       </div>
 
@@ -244,37 +393,45 @@
 
             <div class="columns is-full-width">
               <div class="column is-3 has-text-centered">
-                <video id="realfusion1" autoplay muted loop playsinline height="100%">
+                <img src="./static/realfusion/pear_j.png" alt="apple_j" width="200px">
+                <br>
+                <video id="realfusion1" autoplay muted loop playsinline width="200px">
                   <source src="./static/realfusion/pear_j_cam1.mp4" type="video/mp4">
                 </video>
+                <br>
                 <p class="subtitle is-6">Pear<br>Julienne</p>
               </div>
 
               <div class="column is-3 has-text-centered">
-                <video id="realfusion2" autoplay muted loop playsinline height="100%">
+                <img src="./static/realfusion/squash_sc.png" alt="squash_sc" width="200px">
+                <br>
+                <video id="realfusion2" autoplay muted loop playsinline width="200px">
                   <source src="./static/realfusion/squash_sc_cam1.mp4" type="video/mp4">
                 </video>
+                <br>
                 <p class="subtitle is-6">Squash<br>Small Cut</p>
               </div>
 
               <div class="column is-3 has-text-centered">
-                <video id="realfusion2" autoplay muted loop playsinline height="100%">
+                <img src="./static/realfusion/watermelon_hrs.png" alt="watermelon_hrs" width="200px">
+                <br>
+                <video id="realfusion2" autoplay muted loop playsinline width="200px">
                   <source src="./static/realfusion/watermelon_hrs_cam3.mp4" type="video/mp4">
                 </video>
+                <br>
                 <p class="subtitle is-6">Watermelon<br>Half Round Slices</p>
               </div>
 
               <div class="column is-3 has-text-centered">
-                <video id="realfusion2" autoplay muted loop playsinline height="100%">
+                <img src="./static/realfusion/potato_b.png" alt="potato_b" width="200px">
+                <br>
+                <video id="realfusion2" autoplay muted loop playsinline width="200px">
                   <source src="./static/realfusion/potato_b_cam2.mp4" type="video/mp4">
                 </video>
+                <br>
                 <p class="subtitle is-6">Potato<br>Baton</p>
               </div>
-
-              
-
             </div>
-
           </div>
         </div>
 
@@ -288,20 +445,33 @@
               </big>
             </div>
 
-            <div class="columns is-full-width">
-              <div class="column is-12 has-text-centered">
-                <video id="realfusion1" autoplay muted loop playsinline height="100%">
+            <div class="columns is-centered">
+              <div class="column is-6 has-text-centered">
+                <img src="./static/realfusion/onion_rs.png" alt="onion_rs" width="200px">
+                <br>
+                <video id="realfusion1" autoplay muted loop playsinline width="200px">
                   <source src="./static/realfusion/onion_rs_cam3.mp4" type="video/mp4">
                 </video>
+                <br>
                 <p class="subtitle is-6">Onion<br>Round Slices</p>
               </div>
-
             </div>
-
           </div>
         </div>
 
 
+
+      </div>
+
+      <br>
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-4">Intermediate frame generation</h3>
+          <video id="transformations" autoplay muted loop playsinline height="100%" controls>
+            <source src="./videos/granulary_control.mp4" type="video/mp4">
+          </video>
+        </div>
 
       </div>
   </section>
@@ -347,6 +517,45 @@
         "orange": ["hrs", "w", "rs", "sc", "lc"],
         "cauliflower": ["w", "lc", "sc"]
       },
+      "object_states_seen": {
+        'cantaloupe': ['b', 'hrs', 'rs', 'lc', 'w', 'sc'],
+        'cucumber': ['j', 'w', 'sc', 'b', 'hrs', 'rs', 'lc'],
+        'mango': ['sc', 'b', 'lc'],
+        'kiwi': ['rs', 'lc', 'sc', 'hrs'],
+        'turnip': ['b', 'hrs', 'w', 'sc', 'j'],
+        'lemon': ['w', 'hrs', 'lc'],
+        'squash': ['b', 'hrs', 'lc', 'rs', 'w', 'j'],
+        'onion': ['w', 'lc', 'sc', 'hrs'],
+        'banana': ['lc', 'w', 'sc', 'b', 'hrs', 'rs'],
+        'orange': ['hrs', 'rs', 'lc', 'w', 'sc'],
+        'tomato': ['w', 'lc', 'rs'],
+        'pear': ['w', 'b', 'rs', 'lc'],
+        'watermelon': ['sc', 'b', 'rs', 'w', 'lc'],
+        'broccoli': ['sc'],
+        'apple': ['lc', 'w', 'sc', 'b', 'hrs'],
+        'carrot': ['j', 'w', 'sc', 'hrs', 'rs'],
+        'persimmon': ['w', 'sc', 'rs'],
+        'bellpepper': ['lc', 'j', 'sc'],
+        'potato': ['hrs', 'rs', 'w', 'lc', 'sc', 'j'],
+        'cauliflower': ['w', 'lc', 'sc']
+      },
+      "object_states_unseen": {
+        'tomato': ['sc', 'hrs'],
+        'turnip': ['rs', 'lc'],
+        'pear': ['sc', 'j', 'hrs'],
+        'watermelon': ['hrs'],
+        'persimmon': ['lc', 'hrs'],
+        'potato': ['b'],
+        'apple': ['rs', 'j'],
+        'carrot': ['lc', 'b'],
+        'squash': ['sc'],
+        'broccoli': ['w', 'lc'],
+        'lemon': ['rs', 'sc'],
+        'mango': ['w'],
+        'bellpepper': ['w', 'b'],
+        'onion': ['rs'],
+        'kiwi': ['w']
+      },
       "state_abbr": {
         "j": "julienne", "b": "baton", "hrs": "half round", "rs": "round slice", "sc": "small cut", "lc": "large cut", "w": "whole"
       },
@@ -357,29 +566,94 @@
 
     // When the document is fully loaded
     window.onload = function () {
+      // const selectObject = document.getElementById('selectObject');
+      // const attributes = Object.keys(metadata.object_states);
+      // for (let attribute of attributes) {
+      //   let option = document.createElement('option');
+      //   option.value = attribute;
+      //   option.textContent = attribute;
+      //   selectObject.appendChild(option);
+      // }
+      // updateSelectState()
+      updateSelectObject();
+    };
+
+
+    function hasOption(selectId, optionValue) {
+      // Get the select element by its id
+      var selectElement = document.getElementById(selectId);
+
+      // Iterate over all options of the select element
+      for (var i = 0; i < selectElement.options.length; i++) {
+        if (selectElement.options[i].value === optionValue) {
+          // The option with the specified value was found
+          return true;
+        }
+      }
+
+      // The option was not found
+      return false;
+    }
+
+    function updateSelectObject() {
       const selectObject = document.getElementById('selectObject');
-      const attributes = Object.keys(metadata.object_states);
+      const prevSelectedObject = selectObject.value;
+      selectObject.innerHTML = '';  // Clear current options
+
+      const selectSplit = document.getElementById('selectSplit').value;
+
+      let attributes;
+      if (selectSplit == 'seen') {
+        attributes = Object.keys(metadata.object_states_seen);
+      } else if (selectSplit == 'unseen') {
+        attributes = Object.keys(metadata.object_states_unseen);
+      } else if (selectSplit == 'all') {
+        attributes = Object.keys(metadata.object_states);
+      }
+
+
+
       for (let attribute of attributes) {
         let option = document.createElement('option');
         option.value = attribute;
         option.textContent = attribute;
         selectObject.appendChild(option);
       }
+
+      if (hasOption('selectObject', prevSelectedObject)) {
+        selectObject.value = prevSelectedObject;
+      }
+
       updateSelectState()
-    };
+
+    }
 
     function updateSelectState() {
       const selectState = document.getElementById('selectState');
+      const prevSelectedState = selectState.value;
       selectState.innerHTML = '';  // Clear current options
 
-      const selectObject = document.getElementById('selectObject').value;
+      const selectSplit = document.getElementById('selectSplit').value;
 
-      // Get the list of attributes for the selectedA from the metadata
-      const states = metadata.object_states[selectObject];
+      let object_states;
+      if (selectSplit == 'seen') {
+        object_states = metadata.object_states_seen;
+      } else if (selectSplit == 'unseen') {
+        object_states = metadata.object_states_unseen;
+      } else if (selectSplit == 'all') {
+        object_states = metadata.object_states;
+      }
+
+      const selectObject = document.getElementById('selectObject').value;
+      const states = object_states[selectObject];
 
       // Iterate over the attributesB list and populate the selectState options
       for (let attribute of states) {
         selectState.options.add(new Option(metadata.state_abbr[attribute], attribute));
+      }
+
+      if (hasOption('selectState', prevSelectedState)) {
+        selectState.value = prevSelectedState;
       }
 
       // Trigger image update
