@@ -40,7 +40,13 @@
 
   <style>
     #selectObject {
-      margin-right: 40px;
+      margin-left: 0.3%;
+      /* margin-right: 10%; */
+    }
+
+    #selectState {
+      margin-left: 0.3%;
+      /* margin-right: 20px; */
     }
 
     #compGenTable table {
@@ -50,12 +56,11 @@
 
     #compGenTable td,
     #compGenTable th {
-      padding: 15px;
+      padding: 1%;
       text-align: center;
       font-weight: bold;
       vertical-align: middle;
     }
-
   </style>
 
 
@@ -173,26 +178,34 @@
 
   <section class="section">
     <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
+      <!-- <div class="columns is-centered has-text-centered"> -->
+      <div class="columns is-centered">
         <div class="column">
           <h2 class="title is-3">Compositional Generation Results</h2>
           <div class="content has-text-justified">
             <p>
-              We consider these methods: <b>Stable Diffusion (SD)</b>, <b>Stable Diffusion + Textual Inversion (SD + TI)</b>, 
-              <b>DreamBooth</b>, <b>Stable Diffusion + Fine-tuning (FT)</b>, <b>Stable Diffusion + Textual Inversion + Fine-tuning (SD + TI + FT)</b>. 
+              We consider these methods: <b>Stable Diffusion (SD)</b>, <b>Stable Diffusion + Textual Inversion (SD +
+                TI)</b>,
+              <b>DreamBooth</b>, <b>Stable Diffusion + Fine-tuning (FT)</b>, <b>Stable Diffusion + Textual Inversion +
+                Fine-tuning (SD + TI + FT)</b>.
               <b>Ground Truth (GT)</b> real images are shown in the first row for reference.
               Please select different objects and states to view the generated images.
             </p>
           </div>
           <!-- Selection boxes -->
-          <label style="font-size: 16px"> Choose an Object </label>
-          <select style="font-size: 16px;" id="selectObject" onchange="updateSelectState()">
-          </select>
 
-          <label style="font-size: 16px"> Choose a State </label>
-          <select style="font-size: 16px;" id="selectState" onchange="updateCompGenImages()">
-            <!-- <option value="null">choose object first</option> -->
-          </select>
+          <div class="content">
+            <label style="font-size: 16px"> Choose an Object </label>
+            <select style="font-size: 16px;" id="selectObject" onchange="updateSelectState()">
+            </select>
+          </div>
+
+          <div class="content">
+            <label style="font-size: 16px"> Choose a State </label>
+            <select style="font-size: 16px;" id="selectState" onchange="updateCompGenImages()">
+              <!-- <option value="null">choose object first</option> -->
+            </select>
+          </div>
 
           <!-- Table for images and descriptions -->
           <table>
@@ -204,6 +217,93 @@
         </div>
       </div>
     </div>
+  </section>
+
+
+
+
+
+  <!-- 3D Reconstruction from Multiple Views with RealFusion -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title">3D Reconstruction from Multiple Views with RealFusion</h2>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <div class="column is-full-width has-text-centered">
+              <!-- <p>Successful Examples</p> -->
+              <big style="font-size:20px; font-weight:bold">
+                Successful
+              </big>
+            </div>
+
+            <div class="columns is-full-width">
+              <div class="column is-3 has-text-centered">
+                <video id="realfusion1" autoplay muted loop playsinline height="100%">
+                  <source src="./static/realfusion/pear_j_cam1.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6">Pear<br>Julienne</p>
+              </div>
+
+              <div class="column is-3 has-text-centered">
+                <video id="realfusion2" autoplay muted loop playsinline height="100%">
+                  <source src="./static/realfusion/squash_sc_cam1.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6">Squash<br>Small Cut</p>
+              </div>
+
+              <div class="column is-3 has-text-centered">
+                <video id="realfusion2" autoplay muted loop playsinline height="100%">
+                  <source src="./static/realfusion/watermelon_hrs_cam3.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6">Watermelon<br>Half Round Slices</p>
+              </div>
+
+              <div class="column is-3 has-text-centered">
+                <video id="realfusion2" autoplay muted loop playsinline height="100%">
+                  <source src="./static/realfusion/potato_b_cam2.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6">Potato<br>Baton</p>
+              </div>
+
+              
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="column is-4">
+          <div class="content">
+            <div class="column is-full-width has-text-centered">
+              <!-- <p>Successful Examples</p> -->
+              <big style="font-size:20px; font-weight:bold">
+                Unsuccessful
+              </big>
+            </div>
+
+            <div class="columns is-full-width">
+              <div class="column is-12 has-text-centered">
+                <video id="realfusion1" autoplay muted loop playsinline height="100%">
+                  <source src="./static/realfusion/onion_rs_cam3.mp4" type="video/mp4">
+                </video>
+                <p class="subtitle is-6">Onion<br>Round Slices</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
   </section>
 
 
@@ -298,6 +398,7 @@
         const row = table.insertRow();
         const descCell = row.insertCell(0);
         descCell.innerText = metadata.name_shorten[methodName];  // Add appropriate descriptions
+        descCell.style = "font-weight: bold; font-size: 16px; padding: 0%;"
 
         for (let j = 0; j < 4; j++) {
           const imgCell = row.insertCell(j + 1);
